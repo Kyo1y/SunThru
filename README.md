@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SunThru Web
+
+The official website for [SunThru](https://sunthru.co) — a manufacturing company enabling widespread commercialization of aerogels for high-performance window products.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, TypeScript)
+- **Styling:** Tailwind CSS v4
+- **CMS:** Sanity v4 (embedded Studio at `/studio`)
+- **Hosting:** Vercel
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Home — hero, video, who we are |
+| `/about` | About — technology overview |
+| `/team` | Team members + partner organizations |
+| `/news` | Press coverage (managed via Sanity) |
+| `/contact` | Contact (mailto link) |
+| `/studio` | Sanity CMS admin UI |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000/studio](http://localhost:3000/studio) to manage news articles.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the project root:
 
-## Learn More
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+  page.tsx              # Home
+  about/page.tsx        # About
+  team/page.tsx         # Team
+  news/page.tsx         # News
+  contact/page.tsx      # Contact
+  studio/[[...tool]]/   # Sanity Studio
+components/
+  NavBar.tsx            # Responsive navbar with mobile drawer
+  Footer.tsx            # Site footer
+  AutoplayVideo.tsx     # Scroll-triggered autoplay video
+public/
+  team/                 # Team member photos
+  partners/             # Partner organization logos
+sanity/
+  schemaTypes/          # Sanity content schemas
+  client.ts             # Sanity API client
+  queries.ts            # GROQ queries
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+```bash
+npx vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` to your Vercel project environment variables.
