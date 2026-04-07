@@ -1,87 +1,155 @@
 @import "tailwindcss";
 
+/* ─── Design Token Variables ────────────────────────────── */
 @theme {
-  --color-navy: #0D1B2A;
-  --color-navy-light: #1B2D45;
-  --color-navy-800: #162236;
-  --color-sky: #3B9ECF;
-  --color-sky-light: #6BBDE3;
-  --color-sky-dark: #2A7EA8;
-  --color-off-white: #F8FAFC;
-  --color-surface: #FFFFFF;
-  --color-muted: #64748B;
-  --color-border: #E2E8F0;
-  --color-text: #1E293B;
-  --color-text-light: #94A3B8;
-  --color-accent: #F59E0B;
+  /* Surface hierarchy */
+  --color-surface: #f7f9fc;
+  --color-surface-bright: #f7f9fc;
+  --color-surface-dim: #d8dadd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f2f4f7;
+  --color-surface-container: #eceef1;
+  --color-surface-container-high: #e6e8eb;
+  --color-surface-container-highest: #e0e3e6;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Primary / text */
+  --color-primary: #000719;
+  --color-primary-container: #0d1f3c;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #7787aa;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #44474d;
+
+  /* Secondary */
+  --color-secondary: #356574;
+  --color-secondary-container: #b7e7f9;
+  --color-secondary-fixed: #baeafc;
+  --color-secondary-fixed-dim: #9ecee0;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #396979;
+
+  /* Accents */
+  --color-amber: #E8A030;
+  --color-ice-blue: #A8D8EA;
+
+  /* Outline */
+  --color-outline: #75777e;
+  --color-outline-variant: #c5c6ce;
+
+  /* Error */
+  --color-error: #ba1a1a;
+
+  /* Fonts */
+  --font-headline: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background-color: var(--color-off-white);
-    color: var(--color-text);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
+/* ─── Base ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@layer utilities {
-  .container-wide {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .glass {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .hero-gradient {
-    background: linear-gradient(135deg, #0D1B2A 0%, #1B2D45 40%, #2A7EA8 100%);
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Fade-in animation */
-@keyframes fadeInUp {
+body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ─── Typography helpers ─────────────────────────────────── */
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Glassmorphism ──────────────────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ─── Micro-grid texture (aerogel mesh) ─────────────────── */
+.micro-grid {
+  background-image: radial-gradient(circle, #75777e 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* ─── Layout helpers ─────────────────────────────────────── */
+.container-wide {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* ─── Animations ─────────────────────────────────────────── */
+@keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out both;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.animate-delay-100 { animation-delay: 0.1s; }
-.animate-delay-200 { animation-delay: 0.2s; }
-.animate-delay-300 { animation-delay: 0.3s; }
-.animate-delay-400 { animation-delay: 0.4s; }
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease both;
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+
+/* ─── No-scrollbar utility ───────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Material Symbols weight */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}

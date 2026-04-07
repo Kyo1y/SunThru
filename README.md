@@ -69,3 +69,33 @@ npx vercel
 ```
 
 Add `NEXT_PUBLIC_SANITY_PROJECT_ID` and `NEXT_PUBLIC_SANITY_DATASET` to your Vercel project environment variables.
+
+
+
+## Notes
+schemaTypes/index.ts — the schema registry
+
+This file is a list of all your content types. Sanity reads this array to know
+what documents exist in your project. Right now it only has newsArticle. If you
+ever added a new type (say, a teamMember schema), you'd import it here and add
+it to the types array — that's all it takes to make it appear in Studio.
+
+Think of it as the master plugin list for your content model.
+
+---
+
+structure.ts — the Studio sidebar layout
+
+This controls what you see in the left sidebar of the Studio. It's currently
+using the default "Blog" template layout from when you ran sanity init — which
+is why it lists post, category, and author even though those schemas don't
+exist in your project.
+
+The last line (the filter) is what actually shows your News Article in the
+sidebar — it catches everything not explicitly listed above.
+
+Both files are a bit stale from sanity init. The structure.ts sidebar title
+says "Blog" and references schema types that don't exist. It still works
+because the filter catches newsArticle anyway. To clean it up, you'd simplify
+structure.ts to just list newsArticle directly and rename the title to
+"SunThru".

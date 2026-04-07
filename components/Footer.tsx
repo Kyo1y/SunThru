@@ -1,80 +1,86 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Linkedin } from "lucide-react";
+
+const NAV_COLS = [
+    {
+        heading: "Explore",
+        links: [
+            { href: "/technology", label: "Technology" },
+            { href: "/product", label: "Product" },
+            { href: "/impact", label: "Impact" },
+            { href: "/about", label: "About" },
+            { href: "/news", label: "News" },
+        ],
+    },
+    {
+        heading: "Company",
+        links: [
+            { href: "/partners", label: "Partner With Us" },
+            { href: "https://www.linkedin.com/company/sunthru", label: "LinkedIn", external: true },
+        ],
+    },
+    {
+        heading: "Contact",
+        links: [
+            { href: "mailto:Johncosta@sunthru.co", label: "Johncosta@sunthru.co", external: true },
+        ],
+    },
+];
 
 export default function Footer() {
     return (
-        <footer className="bg-navy text-white/80">
-            <div className="container-wide py-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Brand */}
-                    <div>
-                        <Link href="/" className="mb-3 inline-block">
-                            <Image
-                                src="/logo.jpg"
-                                alt="SunThru"
-                                width={50}
-                                height={50}
-                                className="h-auto"
-                            />
-                        </Link>
-                        <p className="text-sm text-white/60 max-w-xs">
-                            Enabling widespread commercialization of aerogels for high-performance window products.
-                        </p>
-                    </div>
-
-                    {/* Links */}
-                    <div>
-                        <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider">
-                            Navigation
-                        </h4>
-                        <nav className="flex flex-col gap-2">
-                            {[
-                                { href: "/", label: "Home" },
-                                { href: "/about", label: "About" },
-                                { href: "/team", label: "Team" },
-                                { href: "/news", label: "News" },
-                                { href: "/contact", label: "Contact" },
-                            ].map(({ href, label }) => (
-                                <Link
-                                    key={href}
-                                    href={href}
-                                    className="text-sm text-white/60 hover:text-sky-light transition-colors w-fit"
-                                >
-                                    {label}
-                                </Link>
-                            ))}
-                        </nav>
-                    </div>
-
-                    {/* Contact */}
-                    <div>
-                        <h4 className="text-sm font-semibold text-white mb-3 uppercase tracking-wider">
-                            Get in Touch
-                        </h4>
-                        <div className="flex flex-col gap-3">
-                            <a
-                                href="mailto:Johncosta@sunthru.co"
-                                className="flex items-center gap-2 text-sm text-white/60 hover:text-sky-light transition-colors"
-                            >
-                                <Mail size={16} />
-                                Johncosta@sunthru.co
-                            </a>
-                            <a
-                                href="https://www.linkedin.com/company/sunthru"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-sm text-white/60 hover:text-sky-light transition-colors"
-                            >
-                                <Linkedin size={16} />
-                                LinkedIn
-                            </a>
-                        </div>
-                    </div>
+        <footer className="bg-[#f2f4f7] border-t border-[#c5c6ce]/20">
+            <div className="container-wide py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+                {/* Brand */}
+                <div className="space-y-4">
+                    <Link href="/">
+                        <Image
+                            src="/logo.jpg"
+                            alt="SunThru"
+                            width={90}
+                            height={30}
+                            className="h-8 w-auto object-contain"
+                        />
+                    </Link>
+                    <p className="text-sm text-[#44474d] leading-relaxed max-w-xs">
+                        Precision engineering for a sustainable future. Pioneering the next generation of silica aerogel insulation.
+                    </p>
                 </div>
 
-                <div className="mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/40">
+                {/* Link columns */}
+                {NAV_COLS.map((col) => (
+                    <div key={col.heading}>
+                        <h4
+                            className="text-xs font-bold uppercase tracking-widest mb-5 text-[#000719]"
+                            style={{ fontFamily: "var(--font-headline)" }}
+                        >
+                            {col.heading}
+                        </h4>
+                        <ul className="space-y-3">
+                            {col.links.map((link) => (
+                                <li key={link.href}>
+                                    <Link
+                                        href={link.href}
+                                        target={(link as { external?: boolean }).external ? "_blank" : undefined}
+                                        rel={(link as { external?: boolean }).external ? "noopener noreferrer" : undefined}
+                                        className="text-sm text-[#44474d] hover:text-[#E8A030] transition-colors"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+
+            <div className="container-wide pb-8 border-t border-[#c5c6ce]/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-xs text-[#75777e]" style={{ fontFamily: "var(--font-mono)" }}>
                     © {new Date().getFullYear()} SunThru. All rights reserved.
+                </p>
+                <div className="flex items-center gap-2 text-xs" style={{ fontFamily: "var(--font-mono)" }}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#356574] inline-block" />
+                    <span className="text-[#75777e]">Precision engineering for a sustainable future.</span>
                 </div>
             </div>
         </footer>
