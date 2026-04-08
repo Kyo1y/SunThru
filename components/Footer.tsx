@@ -35,7 +35,7 @@ export default function Footer() {
                 <div className="space-y-4">
                     <Link href="/">
                         <Image
-                            src="/logo.jpg"
+                            src="/sunthru_cropped_logo.png"
                             alt="SunThru"
                             width={90}
                             height={30}

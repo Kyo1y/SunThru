@@ -6,10 +6,10 @@ export const metadata: Metadata = {
 };
 
 const PROCESS_STEPS = [
-    { phase: "PHASE_01", title: "Silica Precursor", desc: "Liquid silicate solution engineered for high transparency and nanopore uniformity.", color: "#356574" },
-    { phase: "PHASE_02", title: "Gelation", desc: "Chemical cross-linking forms a solid, porous silica network within the solvent.", color: "#356574" },
-    { phase: "PHASE_03", title: "Supercritical Drying", desc: "RSCE bypasses capillary stress by removing solvent at supercritical pressure.", color: "#E8A030" },
-    { phase: "PHASE_04", title: "Finished Monolith", desc: "The final 99.8% air aerogel pane, ready for high-performance IGU integration.", color: "#356574" },
+    { phase: "PHASE_01", title: "Silica Precursor", desc: "Liquid silicate solution engineered for high transparency and nanopore uniformity.", color: "#356574", iconTitle: "science" },
+    { phase: "PHASE_02", title: "Gelation", desc: "Chemical cross-linking forms a solid, porous silica network within the solvent.", color: "#356574", iconTitle: "grid_view" },
+    { phase: "PHASE_03", title: "Supercritical Drying", desc: "RSCE bypasses capillary stress by removing solvent at supercritical pressure.", color: "#E8A030", iconTitle: "thermostat" },
+    { phase: "PHASE_04", title: "Finished Monolith", desc: "The final 99.8% air aerogel pane, ready for high-performance IGU integration.", color: "#356574", iconTitle: "layers" },
 ];
 
 const SOMA_UNITS = [
@@ -29,9 +29,8 @@ export default function TechnologyPage() {
     return (
         <>
             {/* ── Hero ─────────────────────────────────────────── */}
-            <section className="pt-32 pb-20 px-8 max-w-screen-2xl mx-auto relative">
-                <div className="absolute inset-0 micro-grid" />
-                <div className="max-w-4xl relative z-10">
+            <section className="pt-32 pb-20 px-8 w-full micro-grid flex  items-center">
+                <div className="max-w-screen-2xl z-10 flex flex-col gap-5 mx-auto">
                     <div className="inline-flex items-center gap-2 mb-6">
                         <span className="h-px w-8 bg-[#75777e]/30" />
                         <span className="font-mono text-xs tracking-widest text-[#75777e] uppercase">Technical Blueprint v2.4</span>
@@ -51,14 +50,14 @@ export default function TechnologyPage() {
                     <h2 className="text-3xl font-bold tracking-tight mb-16 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>
                         Process Visualization: RSCE Workflow
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 ">
                         {PROCESS_STEPS.map((step) => (
-                            <div key={step.phase} className="glass-panel p-8 border-l-2" style={{ borderColor: step.color }}>
+                            <div key={step.phase} className="glass-panel p-8 border-l-2 flex flex-col justify-between" style={{ borderColor: step.color }}>
                                 <span className="font-mono text-sm block mb-4" style={{ color: step.color }}>{step.phase}</span>
                                 <h3 className="font-bold text-xl mb-3 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{step.title}</h3>
                                 <p className="text-sm text-[#44474d] leading-relaxed">{step.desc}</p>
-                                <div className="mt-8 h-24 flex items-center justify-center bg-[#e6e8eb]/30">
-                                    <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40">[ {step.title} ]</span>
+                                <div className="mt-8 h-32 flex items-center justify-center bg-surface-container-high/30">
+                                    <span className="material-symbols-outlined text-4xl text-outline-variant" style={step.phase == "PHASE_03" ? { color: step.color } : {}}>{step.iconTitle}</span>
                                 </div>
                             </div>
                         ))}
@@ -92,10 +91,8 @@ export default function TechnologyPage() {
                         </div>
                     </div>
                     {/* SOMA placeholder */}
-                    <div className="bg-[#e6e8eb] aspect-[4/5] flex items-center justify-center">
-                        <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40 text-center px-8">
-                            [ SOMA REACTOR DIAGRAM<br />— Photo Placeholder — ]
-                        </span>
+                    <div className="bg-[#e6e8eb] flex items-center justify-center">
+                        <img alt="Technical drawing of the SOMA supercritical oven highlighting the high-pressure chamber and precision thermal controls" className="w-full h-full object-cover grayscale contrast-125" data-alt="precise technical drawing of a high-pressure industrial supercritical reactor chamber with scientific annotations and clean aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOiEbqyJ2lAkAIXakKopvKxsCH-BelWWu8mba61MuT8AeeInt2sP83Vje1pqAiab6-Ipdio41bDh7iYsGGLr8A-QPDcgKfvIUR4NgiL66LIvz1KOLeGkgy79denn3PJOx_IXNoMN7xmyJTVFnSOQEMlA52RMxeInx16QfxoRV28c5KDy4Sol16e74UN_nTK14-HSUaguK4cbGGphBTcUc2JT4lDPyxD0MJ_yuMroJ1Lr6CJtG5zoYhe2cZB728xGbCfPSm0j2bIP_X" />
                     </div>
                 </div>
             </section>

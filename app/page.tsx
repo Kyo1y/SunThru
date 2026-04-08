@@ -52,7 +52,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/partners"
-                className="glass-panel text-white px-8 py-4 font-bold border border-white/20 hover:bg-white hover:text-[#000719] transition-colors duration-300"
+                className="bg-white/60 text-[#0d1f3c] px-8 py-4 font-bold hover:bg-[#FFFFFF] transition-colors duration-300"
                 style={{ fontFamily: "var(--font-headline)" }}
               >
                 Partner With Us
@@ -62,7 +62,7 @@ export default function Home() {
         </div>
 
         {/* Thermal Index floating card */}
-        <div className="absolute right-12 bottom-24 w-80 glass-panel p-6 rounded-lg border border-white/30 hidden lg:block">
+        {/* <div className="absolute right-12 bottom-24 w-80 glass-panel p-6 rounded-lg border border-white/30 hidden lg:block">
           <div className="flex justify-between items-center mb-4">
             <span className="font-mono text-xs text-primary-container font-bold uppercase tracking-widest">Thermal Index</span>
             <span className="material-symbols-outlined text-[#E8A030]" data-icon="thermostat">thermostat</span>
@@ -74,7 +74,7 @@ export default function Home() {
           <p className="mt-4 text-xs font-body text-on-surface-variant leading-relaxed">
             99% air molecular structure providing 3x the R-value of standard inert gas fills.
           </p>
-        </div>
+        </div> */}
       </section>
 
       {/* ── Trust Rail ───────────────────────────────────── */}
@@ -110,9 +110,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="aspect-square bg-[#e0e3e6] relative overflow-hidden group flex items-center justify-center">
-                <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40">
-                  [ TRIPLE-PANE CROSS SECTION ]
-                </span>
+                <img alt="Triple-Pane Cross Section" className="w-full h-full object-cover mix-blend-multiply opacity-80 transition-transform duration-700 group-hover:scale-105" data-alt="technical diagram of a heavy triple-pane window cross section with thick glass and metal spacers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6qynwvc1qIHoUAU0xu5Q-W6Y_XgkxP0FqLo7WM_Vi7JhbQb3LgsyyJZTf0Pnj_wZCaK1V3HgB_o_VCUIV4q_WNkOA3_I7VtfhFNqC3DYRdhjZs17iO4MMM1dyommAgi2aRe5ZGn8y2Hsar-jTGfvQpXio37_DAWTj2GKUpxI1AI6sXsTSYn8cWQtiMqJTsnGIcXK6zH2NI8JlXW-wT4YvHVkEvfU3wTEaJUegOjPnlCtJ-yZIG_tlrXSg-dYstw89iMHhguyoCu_n" />
                 <div className="absolute bottom-8 left-8">
                   <div className="bg-white px-4 py-2 shadow-sm inline-block">
                     <span className="font-mono text-xs font-bold text-[#ba1a1a]">CRITICAL WEIGHT: 140kg</span>
@@ -133,9 +131,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="aspect-square bg-[#f2f4f7] border border-[#b7e7f9] relative overflow-hidden group flex items-center justify-center">
-                <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40">
-                  [ AEROGEL INSERT ]
-                </span>
+                <img alt="SunThru Aerogel Insert" className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105" data-alt="macro close-up of a blue-tinted transparent silica aerogel sample being inserted between two glass panes, crystalline structure" src="/aerogel_insert.jpg" />
                 <div className="absolute bottom-8 left-8">
                   <div className="bg-[#E8A030] px-4 py-2 shadow-sm inline-block">
                     <span className="font-mono text-xs font-bold text-[#0d1f3c]">OPTIMIZED WEIGHT: 82kg</span>
@@ -218,7 +214,9 @@ export default function Home() {
       <section className="section-padding bg-white">
         <div className="container-wide text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            <span className="text-4xl text-[#E8A030]">✦</span>
+            <span className="material-symbols-outlined text-4xl text-[#E8A030]" style={{ fontVariationSettings: "'FILL' 1" }}>
+              eco
+            </span>
             <h2 className="text-5xl font-bold text-[#000719] leading-tight" style={{ fontFamily: "var(--font-headline)" }}>
               Decarbonizing the built environment, one pane at a time.
             </h2>
@@ -226,8 +224,19 @@ export default function Home() {
               Our technology is engineered to meet the strictest ENERGY STAR requirements of 2024 and beyond. By rethinking the window core, we're making sustainable architecture accessible for every commercial and residential project.
             </p>
             <div className="pt-8 flex justify-center gap-16 opacity-50">
-              <span className="font-mono text-sm uppercase tracking-tighter">✓ Energy Star V7</span>
-              <span className="font-mono text-sm uppercase tracking-tighter">⬡ LEED Platinum Ready</span>
+              <div className="flex items-center justify-center gap-2">
+                <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  check_circle
+                </span>
+                <span className="font-mono text-sm uppercase tracking-tighter">Energy Star V7</span>
+              </div>
+              <div className="flex items-center justify-center gap-2">
+                <span className="material-symbols-outlined text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  apartment
+                </span>
+                <span className="font-mono text-sm uppercase tracking-tighter">LEED Platinum Ready</span>
+              </div>
+
             </div>
           </div>
         </div>

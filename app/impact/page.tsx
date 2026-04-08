@@ -9,14 +9,13 @@ export default function ImpactPage() {
     return (
         <>
             {/* ── Hero ─────────────────────────────────────────── */}
-            <section className="max-w-screen-2xl mx-auto px-8 pt-32 pb-24 relative">
-                <div className="absolute inset-0 micro-grid" />
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end relative z-10">
+            <section className="micro-grid w-full  px-8 pt-32 pb-24 relative">
+                <div className="max-w-screen-2xl mx-auto  grid grid-cols-1 lg:grid-cols-12 gap-12 items-end relative z-10">
                     <div className="lg:col-span-8">
                         <span className="inline-block py-1 px-3 bg-[#e6e8eb] text-[#44474d] font-mono text-[10px] tracking-widest uppercase mb-6">
                             IMPACT ANALYSIS 001_THERMAL_LEAKAGE
                         </span>
-                        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-[#000719] leading-[0.9] mb-8" style={{ fontFamily: "var(--font-headline)" }}>
+                        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-[#000719] leading-[1.1] mb-8" style={{ fontFamily: "var(--font-headline)" }}>
                             The Physics of{" "}
                             <span className="text-[#7787aa]">Energy Loss.</span>
                         </h1>
@@ -39,23 +38,23 @@ export default function ImpactPage() {
             {/* ── Climate Data Vis ──────────────────────────────── */}
             <section className="max-w-screen-2xl mx-auto px-8 pb-32">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
                     <div className="lg:col-span-2 bg-[#f2f4f7] p-12 relative overflow-hidden min-h-[480px] flex flex-col justify-end">
-                        <div className="absolute top-0 right-0 p-6">
+                        <div className="flex w-full justify-end">
                             <span className="font-mono text-[10px] text-[#75777e] uppercase tracking-widest">Heat Flux Mapping / National Average</span>
+
                         </div>
                         {/* Bar chart viz */}
-                        <div className="absolute inset-x-0 top-16 bottom-40 px-12">
-                            <div className="w-full h-full border-b border-l border-[#c5c6ce]/40 flex items-end space-x-3">
-                                {[40, 55, 92, 60, 45].map((h, i) => (
-                                    <div
-                                        key={i}
-                                        className="w-12 transition-all"
-                                        style={{ height: `${h}%`, background: i === 2 ? "#E8A030" : "#0d1f3c", opacity: i === 2 ? 0.9 : 0.7 }}
-                                    >
-                                        {i === 2 && <div className="font-mono text-[10px] text-[#E8A030] -mt-6 whitespace-nowrap">CRITICAL THRESHOLD</div>}
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="w-full h-full border-b border-l border-[#c5c6ce]/40 flex items-end space-x-3">
+                            {[40, 55, 92, 60, 45].map((h, i) => (
+                                <div
+                                    key={i}
+                                    className="w-12 transition-all"
+                                    style={{ height: `${h}%`, background: i === 2 ? "#E8A030" : "#0d1f3c", opacity: i === 2 ? 0.9 : 0.7 }}
+                                >
+                                    {i === 2 && <div className="font-mono text-[10px] text-[#E8A030] -mt-6 whitespace-nowrap">CRITICAL THRESHOLD</div>}
+                                </div>
+                            ))}
                         </div>
                         <div className="relative z-10">
                             <h3 className="text-3xl font-bold text-[#000719] mb-4" style={{ fontFamily: "var(--font-headline)" }}>Window Heat Loss</h3>
@@ -72,12 +71,12 @@ export default function ImpactPage() {
                     </div>
                     <div className="space-y-6">
                         {[
-                            { icon: "◈", title: "Thermal Conductance", value: "0.015", unit: "W/m·K", desc: "SunThru Silica Aerogel monoliths provide the world's lowest thermal conductivity for transparent materials." },
-                            { icon: "⬡", title: "Carbon Abatement", value: "12.4", unit: "GT", desc: "Projected global CO₂ reduction through full-scale building envelope optimization." },
+                            { icon: "thermostat", title: "Thermal Conductance", value: "0.015", unit: "W/m·K", desc: "SunThru Silica Aerogel monoliths provide the world's lowest thermal conductivity for transparent materials." },
+                            { icon: "co2", title: "Carbon Abatement", value: "12.4", unit: "GT", desc: "Projected global CO₂ reduction through full-scale building envelope optimization." },
                         ].map((card) => (
                             <div key={card.title} className="glass-panel p-10 border border-[#c5c6ce]/10">
                                 <div className="flex items-center space-x-4 mb-6">
-                                    <span className="text-[#E8A030] text-xl">{card.icon}</span>
+                                    <span className="material-symbols-outlined text-[#E8A030]">{card.icon}</span>
                                     <h4 className="font-bold text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{card.title}</h4>
                                 </div>
                                 <div className="font-mono text-3xl font-bold text-[#000719] mb-2">
@@ -96,11 +95,11 @@ export default function ImpactPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                         <div>
                             <span className="font-mono text-[10px] text-[#b6c7ec] uppercase tracking-widest mb-8 block">CLIMATE ZONE ANALYSIS [NORTH_CENTRAL]</span>
-                            <h2 className="text-5xl font-bold tracking-tight mb-8" style={{ fontFamily: "var(--font-headline)" }}>
+                            <h2 className="text-5xl lg:text-7xl font-bold tracking-tight mb-8" style={{ fontFamily: "var(--font-headline)" }}>
                                 Engineering for the{" "}
                                 <span className="text-[#E8A030]">Cold Climate Transition.</span>
                             </h2>
-                            <p className="text-[#7787aa] mb-12 text-lg leading-relaxed">
+                            <p className="text-[#7787aa] mb-12 text-lg lg:text-xl leading-relaxed">
                                 ENERGY STAR Version 7.0 has fundamentally changed the landscape for window manufacturers. Standard dual-pane glass no longer meets the stringent U-Factor requirements for Northern zones.
                             </p>
                             <div className="grid grid-cols-2 gap-8">
@@ -110,16 +109,14 @@ export default function ImpactPage() {
                                 ].map((stat) => (
                                     <div key={stat.label} className="border-l border-[#7787aa]/30 pl-6">
                                         <div className="font-mono text-2xl mb-1">{stat.value}</div>
-                                        <div className="text-[10px] font-bold uppercase tracking-widest text-[#b6c7ec]">{stat.label}</div>
+                                        <div className="text-md font-bold uppercase tracking-widest text-[#b6c7ec]">{stat.label}</div>
                                     </div>
                                 ))}
                             </div>
                         </div>
                         {/* Map placeholder */}
                         <div className="relative aspect-square bg-[#0d1f3c]/50 flex items-center justify-center">
-                            <span className="font-mono text-xs text-[#7787aa] uppercase tracking-widest text-center">
-                                [ US Climate Zone Map<br />— Photo Placeholder — ]
-                            </span>
+                            <img className="w-full h-full object-contain mix-blend-screen opacity-80" data-alt="Technical map of US climate zones with highlighted northern regions in subtle shades of blue and technical data overlays" data-location="Northern United States" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWpzx1EdCE30G3xkjO1fisU0z399pXGRgboB8UJ7BnMNIBKwMzmQiS2yeAaGU3ZWu2c7W6mOQllF5GjYOPy9lfgEMcn8zXjAuFUH6PLF5o4NGmH0FPDmVOqH0TjJlsAW_ZXW8cY0cwgRGUzOsmnMtpsm7aK5YhiFnZwHcMv1b5_2Ty9RkwClY_JPXVcU-JDkbjpCFIHCPe95I4wNDhjpPiFKrTQYN73TAuG34cBvRf6BWcB94EykQKsiPXgqP39--GVuU1pEbgCzpH" />
                             <div className="absolute top-1/4 left-1/4 glass-panel p-3 border border-white/10">
                                 <div className="font-mono text-[10px] text-white">ZONE 5–7 HIGH ADOPTION</div>
                             </div>
@@ -131,7 +128,11 @@ export default function ImpactPage() {
             {/* ── ENERGY STAR Section ───────────────────────────── */}
             <section className="max-w-screen-2xl mx-auto px-8 py-32">
                 <div className="bg-[#eceef1] p-16 relative overflow-hidden">
+                    <div className="absolute right-0 opacity-40">
+                        <span className="material-symbols-outlined sm:!text-[12rem] md:!text-[20rem] lg:!text-[35rem]">verified</span>
+                    </div>
                     <div className="max-w-3xl relative z-10">
+
                         <div className="flex items-center space-x-3 mb-10">
                             <div className="w-12 h-0.5 bg-[#E8A030]" />
                             <span className="font-mono text-xs text-[#44474d] tracking-[0.2em]">REGULATORY MANDATE 2022–2024</span>
@@ -165,7 +166,7 @@ export default function ImpactPage() {
                 <div className="py-24 border-y border-[#c5c6ce]/20">
                     <h2 className="text-4xl font-bold text-[#000719] mb-6" style={{ fontFamily: "var(--font-headline)" }}>Scale the Impact.</h2>
                     <p className="text-[#44474d] max-w-xl mx-auto mb-10">We are looking for strategic partners in the glazing and architectural industries to deploy aerogel-enhanced fenestration at scale.</p>
-                    <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+                    <div className="flex flex-col items-stretch md:flex-row justify-center items-center gap-4">
                         <a href="/partners" className="px-10 py-4 bg-[#000719] text-white font-bold text-sm tracking-widest hover:bg-[#0d1f3c] transition-all uppercase" style={{ fontFamily: "var(--font-headline)" }}>
                             Request Technical Spec
                         </a>

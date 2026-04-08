@@ -60,13 +60,11 @@ export default function PartnersPage() {
                 {/* Manufacturers */}
                 <div className="flex flex-col space-y-8">
                     <div className="aspect-[4/3] bg-[#e0e3e6] overflow-hidden flex items-center justify-center">
-                        <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40">
-                            [ Manufacturing Facility Photo Placeholder ]
-                        </span>
+                        <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="high-tech window manufacturing line with precision glass handling equipment in a sterile industrial environment with cool blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Hs7Z_Z1_CCU_mK3y0TLbcKh1WZ8Gljt5HB3Z146PSxpeFIACHAuNoVI1qsFZemsyQBhLQLKDVVTg8GDzglxtg5dT51TK4Hchezka-IP8DhzufFyphm_mHRvULx-QKtK7_D9N9RVc1Yy1ENuC4fTmFlySYWCxlSePpXS7P_hWsVO-dmJ0BWBbuXRJhbXKnQ8OB5sZFDEBBFyImhvfn2Up8sr07dJ6Iq3-uE9nHhbEjblnCuJR8mlbnI0v0rZNBYbRi-6S31ZGA8ye" />
                     </div>
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                            <span className="text-[#E8A030] text-xl">⬡</span>
+                            <span className="material-symbols-outlined text-[#E8A030]">factory</span>
                             <h2 className="text-3xl font-semibold text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>Manufacturers &amp; OEMs</h2>
                         </div>
                         <p className="text-[#44474d]">Integration of SunThru Silica Aerogel inserts into existing Insulated Glass Unit (IGU) assembly lines. We offer licensing and supply-chain partnership models.</p>
@@ -84,13 +82,11 @@ export default function PartnersPage() {
                 {/* Investors */}
                 <div className="flex flex-col space-y-8">
                     <div className="aspect-[4/3] bg-[#e0e3e6] overflow-hidden flex items-center justify-center">
-                        <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40">
-                            [ Aerogel Sample Photo Placeholder ]
-                        </span>
+                        <img className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of a translucent blue silica aerogel sample being held by laboratory tweezers against a minimalist white architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfnkgg7rjUHxv2oCLqnMuZTD8AWdV_Sy1TVIC92beuXKME-bDW3HmoNRpZi0dgDGAISSeclireqvPxvfXXVuzBl5MtcJDsfdkkCkzCuKKWrleUA8R_M5lQ4byLWT-uNYwu5mqs0yEgI9AC_YSZKI5Fe0nzYclOoi8pr-A8uRazPktt5wRUo_MLUAPO70536POE3ZfMMsYcDFpLMwCOhJoFM_n9RSme3I840zRynRZ7o9xwrqkWRXHqTXEw4NdW7Z9DzFGJ4Kje--m" />
                     </div>
                     <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                            <span className="text-[#E8A030] text-xl">◈</span>
+                            <span className="material-symbols-outlined text-[#E8A030]">monitoring</span>
                             <h2 className="text-3xl font-semibold text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>Investors &amp; Grant Bodies</h2>
                         </div>
                         <p className="text-[#44474d]">Current TRL status: 6. Seeking Series A funding for the first commercial-scale pilot facility. Backed by federal and state engineering grants.</p>

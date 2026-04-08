@@ -36,21 +36,22 @@ export default function NavBar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-white/80 backdrop-blur-xl shadow-sm border-b border-[#c5c6ce]/20"
-                    : "bg-white/60 backdrop-blur-xl"
+                ? "bg-white/80 backdrop-blur-xl shadow-sm border-b border-[#c5c6ce]/20"
+                : "bg-white/60 backdrop-blur-xl"
                 }`}
         >
             <div className="container-wide flex h-16 items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-center hover:text-[#E8A030]" style={{ fontFamily: "var(--font-headline)" }}>
                     <Image
-                        src="/logo.jpg"
+                        src="/sunthru_cropped_logo.png"
                         alt="SunThru"
                         width={100}
                         height={34}
                         className="h-9 w-auto object-contain"
                         priority
                     />
+                    SunThru
                 </Link>
 
                 {/* Desktop nav */}
@@ -63,8 +64,8 @@ export default function NavBar() {
                                 href={href}
                                 style={{ fontFamily: "var(--font-headline)" }}
                                 className={`text-sm font-medium tracking-tight transition-colors duration-200 ${isActive
-                                        ? "text-[#E8A030]"
-                                        : "text-[#44474d] hover:text-[#E8A030]"
+                                    ? "text-[#E8A030]"
+                                    : "text-[#44474d] hover:text-[#E8A030]"
                                     }`}
                             >
                                 {label}
@@ -94,33 +95,31 @@ export default function NavBar() {
 
             {/* Mobile drawer */}
             {mobileOpen && (
-                <div className="md:hidden fixed inset-0 top-16 z-40 bg-white flex flex-col">
-                    <nav className="flex flex-col px-6 pt-6 gap-0">
-                        {NAV_LINKS.map(({ href, label }) => {
-                            const isActive = pathname === href;
-                            return (
-                                <Link
-                                    key={href}
-                                    href={href}
-                                    style={{ fontFamily: "var(--font-headline)" }}
-                                    className={`px-4 py-4 text-lg font-medium border-b border-[#c5c6ce]/30 transition-colors ${isActive
-                                            ? "text-[#E8A030]"
-                                            : "text-[#191c1e] hover:text-[#E8A030]"
-                                        }`}
-                                >
-                                    {label}
-                                </Link>
-                            );
-                        })}
-                        <Link
-                            href="/partners"
-                            style={{ fontFamily: "var(--font-headline)" }}
-                            className="mt-6 mx-4 bg-[#0d1f3c] text-white text-center py-4 font-medium"
-                        >
-                            Partner With Us
-                        </Link>
-                    </nav>
-                </div>
+                <nav className="flex flex-col px-6 pt-6 gap-0 bg-white h-screen">
+                    {NAV_LINKS.map(({ href, label }) => {
+                        const isActive = pathname === href;
+                        return (
+                            <Link
+                                key={href}
+                                href={href}
+                                style={{ fontFamily: "var(--font-headline)" }}
+                                className={`px-4 py-4 text-lg font-medium border-b border-[#c5c6ce]/30 transition-colors ${isActive
+                                    ? "text-[#E8A030]"
+                                    : "text-[#191c1e] hover:text-[#E8A030]"
+                                    }`}
+                            >
+                                {label}
+                            </Link>
+                        );
+                    })}
+                    <Link
+                        href="/partners"
+                        style={{ fontFamily: "var(--font-headline)" }}
+                        className="mt-6 mx-4 bg-[#0d1f3c] text-white text-center py-4 font-medium"
+                    >
+                        Partner With Us
+                    </Link>
+                </nav>
             )}
         </header>
     );

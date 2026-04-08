@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
     title: "About",
@@ -16,12 +17,12 @@ const TIMELINE = [
 ];
 
 const TEAM_MEMBERS = [
-    { name: "Ann Anderson", role: "Co-Founder / Lead Material Scientist", degree: "PhD, Thermal Dynamics", image: "/team/ann.jpg", initials: "AA" },
-    { name: "John Costa", role: "Co-Founder / CEO", degree: "MBA, Business Administration", image: "/team/costa.jpg", initials: "JC" },
-    { name: "Kevin Bennett", role: "CFO", degree: "MS, Finance", image: "/team/kevin.jpg", initials: "KB" },
-    { name: "Zhengfei \"Jeff\" Guo", role: "Lead Chemical Engineer", degree: "PhD, Chemical Engineering", image: "/team/jeff.jpg", initials: "ZG" },
-    { name: "Tyler Feeley", role: "Mechanical Engineer", degree: "BS, Mechanical Engineering", image: "/team/tyler.jpg", initials: "TF" },
-    { name: "Mark Lucht", role: "Senior Advisor", degree: "PhD, Materials Science", image: "/team/mark.jpg", initials: "ML" },
+    { name: "John Costa", role: "Founder / CEO", degree: "PhD, Thermal Dynamics", image: "/team/ann.jpg", initials: "AA" },
+    { name: "Jeremy Manus", role: "COO", degree: "MBA, Business Administration", image: "/team/costa.jpg", initials: "JC" },
+    { name: "Maxwell Rhodes", role: "Mechanical Engineer", degree: "MS, Finance", image: "/team/kevin.jpg", initials: "KB" },
+    { name: "Adam Forti", role: "Founder / Advisor", degree: "PhD, Chemical Engineering", image: "/team/jeff.jpg", initials: "ZG" },
+    { name: "Ann Anderson", role: "Founder / Advisor", degree: "BS, Mechanical Engineering", image: "/team/tyler.jpg", initials: "TF" },
+    { name: "Mary Caroll", role: "Founder / Advisor", degree: "PhD, Materials Science", image: "/team/mark.jpg", initials: "ML" },
 ];
 
 export default function AboutPage() {
@@ -59,9 +60,7 @@ export default function AboutPage() {
                     </div>
                     {/* Lab photo placeholder */}
                     <div className="aspect-[4/5] bg-[#e0e3e6] overflow-hidden border border-[#c5c6ce]/10 flex items-center justify-center">
-                        <span className="font-mono text-xs text-[#75777e] uppercase tracking-widest opacity-40 text-center px-8">
-                            [ Lab Photo<br />— Placeholder — ]
-                        </span>
+                        <img className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700" data-alt="Black and white high-contrast photo of researchers in a pristine chemistry lab at Union College, focusing on a transparent aerogel sample under a microscope." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDiA1m9lXpca7gVnWsCtqin9ZGddS9JtH6Ck-4eGVnAMI5LwDW4a0_IPj0uSf5bdtnw8dD2OpNDX9cOaSg5kbCmKcChjiZoynMOV1pqMpTqBYN-cdk5CEFtgdhxESi0TcY4w8ByBgPJGZ_Ib4L1qa_N69lvV7nr9vWWMvotrfHoGkfxgqtGMalcI36Da7nhYyfhXsqSclNotMMuGZ-Pl_zUMsKFKChQPtzKxPGG9R7zT2kMDddMKdbGVHEhTNSxP2wgkI98uvJP3_N" />
                     </div>
                 </div>
             </section>
@@ -76,20 +75,34 @@ export default function AboutPage() {
                 </div>
                 <div className="relative">
                     <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-[#c5c6ce]/30 md:-translate-x-1/2" />
-                    <div className="space-y-24">
+                    <div className="flex flex-col space-between space-y-24">
                         {TIMELINE.map((item, i) => {
                             const isRight = i % 2 === 1;
                             return (
-                                <div key={item.year} className="relative flex flex-col md:flex-row items-center gap-8">
-                                    {!isRight && (
+                                <div
+                                    key={item.year}
+                                    className={cn(
+                                        "relative flex flex-row-reverse pl-[10px] md:flex-row items-center gap-8",
+                                        isRight ? "justify-start md:pl-[5rem] md:flex-row-reverse" : "md:pr-[4.7rem]"
+                                    )}
+                                >
+                                    {!isRight ? (
                                         <div className="w-full md:w-1/2 md:text-right">
                                             <div className="font-mono text-xl font-bold mb-2" style={{ color: item.color }}>{item.year}</div>
                                             <h3 className="text-xl font-bold mb-2 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{item.title}</h3>
                                             <p className="text-[#44474d] max-w-md md:ml-auto">{item.desc}</p>
                                         </div>
+                                    ) : (
+
+                                        <div className="w-full md:w-1/2">
+                                            <div className="font-mono text-xl font-bold mb-2" style={{ color: item.color }}>{item.year}</div>
+                                            <h3 className="text-xl font-bold mb-2 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{item.title}</h3>
+                                            <p className="text-[#44474d] max-w-md">{item.desc}</p>
+                                        </div>
+
                                     )}
                                     <div
-                                        className="absolute left-4 md:left-1/2 md:-translate-x-1/2 border-4 border-[#f7f9fc] shadow-sm"
+                                        className="md:-translate-x-[1px] border-4 border-[#f7f9fc] shadow-sm"
                                         style={{
                                             width: item.size === "lg" ? "1rem" : "0.75rem",
                                             height: item.size === "lg" ? "1rem" : "0.75rem",
@@ -98,15 +111,7 @@ export default function AboutPage() {
                                             boxShadow: item.size === "lg" ? `0 0 0 4px ${item.color}33` : undefined,
                                         }}
                                     />
-                                    {isRight ? (
-                                        <div className="w-full md:w-1/2">
-                                            <div className="font-mono text-xl font-bold mb-2" style={{ color: item.color }}>{item.year}</div>
-                                            <h3 className="text-xl font-bold mb-2 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{item.title}</h3>
-                                            <p className="text-[#44474d] max-w-md">{item.desc}</p>
-                                        </div>
-                                    ) : (
-                                        <div className="w-full md:w-1/2" />
-                                    )}
+
                                 </div>
                             );
                         })}
@@ -148,7 +153,7 @@ export default function AboutPage() {
                                 </div>
                                 <div className="p-8">
                                     <h4 className="text-xl font-bold mb-1 text-[#000719]" style={{ fontFamily: "var(--font-headline)" }}>{member.name}</h4>
-                                    <div className="font-mono text-xs text-[#356574] mb-4">{member.degree}</div>
+                                    {/* <div className="font-mono text-xs text-[#356574] mb-4">{member.degree}</div> */}
                                     <p className="text-sm text-[#44474d] leading-relaxed">{member.role}</p>
                                 </div>
                             </div>

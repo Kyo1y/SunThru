@@ -85,13 +85,6 @@ body {
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* ─── Micro-grid texture (aerogel mesh) ─────────────────── */
-.micro-grid {
-  background-image: radial-gradient(circle, #75777e 0.5px, transparent 0.5px);
-  background-size: 24px 24px;
-  opacity: 0.04;
-  pointer-events: none;
-}
 
 /* ─── Layout helpers ─────────────────────────────────────── */
 .container-wide {
@@ -152,4 +145,11 @@ body {
 /* Material Symbols weight */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ─── Micro-grid texture (aerogel mesh) ─────────────────── */
+
+.micro-grid {
+  background-image: radial-gradient(circle, #e0e3e6 1px, transparent 1px);
+  background-size: 24px 24px;
 }
